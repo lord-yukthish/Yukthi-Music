@@ -9,7 +9,7 @@ import com.google.android.gms.cast.framework.SessionProvider
 import com.google.android.gms.cast.framework.media.CastMediaOptions
 
 @Keep
-class Yukthi MusicCastOptionsProvider : OptionsProvider {
+class LastWaveCastOptionsProvider : OptionsProvider {
     override fun getCastOptions(context: Context): CastOptions = CastOptions.Builder()
         .setReceiverApplicationId(CastMediaControlIntent.DEFAULT_MEDIA_RECEIVER_APPLICATION_ID)
         .setCastMediaOptions(CastMediaOptions.Builder()

@@ -42,7 +42,7 @@ data class ThemePrefs(
     val liquidGlass: Boolean = true,
     /** Optional Material 3 full-width navigation bar instead of the default floating dock. */
     val md3NavBar: Boolean = false,
-    /** Dedicated Yukthi Music Signature Theme inspired by the app logo icon (#C9FB00 & #012226). */
+    /** Dedicated LastWave Signature Theme inspired by the app logo icon (#C9FB00 & #012226). */
     val lastWaveTheme: Boolean = false,
 )
 
@@ -110,7 +110,7 @@ class ThemePreferences @Inject constructor(
         dataStore.edit { it[Keys.MD3_NAV_BAR] = enabled }
     }
 
-    suspend fun setYukthi MusicTheme(enabled: Boolean) {
+    suspend fun setLastWaveTheme(enabled: Boolean) {
         dataStore.edit {
             it[Keys.LASTWAVE_THEME] = enabled
             if (enabled) {

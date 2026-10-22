@@ -256,7 +256,7 @@ fun DiscoverScreen(onBack: () -> Unit = {}, viewModel: DiscoverViewModel = hiltV
         TrackContextMenuSheet(
             target = TrackMenuTarget.Track(track.name, track.artist, track.url),
             capabilities = TrackMenuCapabilities(showCopyActions = true, showDeleteScrobble = true),
-            onPlayInYukthi Music = { playFromDiscover(track) },
+            onPlayInLastWave = { playFromDiscover(track) },
             onDismiss = { menuTrack = null },
         )
     }

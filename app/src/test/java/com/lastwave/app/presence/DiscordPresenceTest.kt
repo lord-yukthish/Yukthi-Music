@@ -77,7 +77,7 @@ class DiscordPresenceTest {
     fun cardIsListeningToLastWaveWithTitleAndArtist() {
         val activity = DiscordPresence.buildActivity(state(), NOW_MS)
         assertEquals(2, activity["type"]?.jsonPrimitive?.int) // 2 = Listening
-        assertEquals("LastWave", str(activity, "name"))
+        assertEquals("Yukthi Music", str(activity, "name"))
         assertEquals("Sunglasses at Night", str(activity, "details"))
         assertEquals("Moondrop\n · Hi-Res Lossless · 24-bit · 96 kHz", str(activity, "state"))
     }
@@ -300,7 +300,7 @@ class DiscordPresenceTest {
                 NOW_MS,
             )["state"]?.jsonPrimitive?.content,
         )
-        assertEquals("LastWave", DiscordPresence.stateLine("", null, "Title", ""))
+        assertEquals("Yukthi Music", DiscordPresence.stateLine("", null, "Title", ""))
     }
 
     // ---- A buffer stall is not a pause ------------------------------------

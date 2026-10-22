@@ -66,8 +66,8 @@ private val DarkTeal = Color(0xFF012226)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Yukthi MusicJamSheet(
-    viewModel: Yukthi MusicJamViewModel = androidx.hilt.navigation.compose.hiltViewModel(),
+fun LastWaveJamSheet(
+    viewModel: LastWaveJamViewModel = androidx.hilt.navigation.compose.hiltViewModel(),
     onDismiss: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()

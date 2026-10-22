@@ -106,7 +106,7 @@ class LyricsRepository @Inject constructor(
     private val kugouApi: KugouLyricsApi,
     private val lrclibApi: LrclibLyricsApi,
     private val appleMusicApi: AppleMusicLyricsApi,
-    private val lastWaveLyricsApi: Yukthi MusicLyricsApi,
+    private val lastWaveLyricsApi: LastWaveLyricsApi,
     private val biniApi: BiniLyricsApi,
     private val lrcRedLyricsApi: LrcRedLyricsApi,
     private val simpMusicApi: SimpMusicLyricsApi,
@@ -358,7 +358,7 @@ class LyricsRepository @Inject constructor(
                 coroutineScope {
                     val requests = mutableListOf<Deferred<LyricsResult.Success?>>()
                     if (!excludedProviders.contains(com.lastwave.app.data.local.LyricsProvider.LASTWAVE)) {
-                        requests.add(async<LyricsResult.Success?> { fetchWordFromYukthi Music(title, artist, album, durationSeconds, recordingIsrc, effectiveVideoId) })
+                        requests.add(async<LyricsResult.Success?> { fetchWordFromLastWave(title, artist, album, durationSeconds, recordingIsrc, effectiveVideoId) })
                     }
                     if (!excludedProviders.contains(com.lastwave.app.data.local.LyricsProvider.LRC_RED)) {
                         requests.add(async<LyricsResult.Success?> { fetchWordFromLrcRed(title, artist, album, durationSeconds, recordingIsrc, biniHit, effectiveVideoId) })
@@ -589,7 +589,7 @@ class LyricsRepository @Inject constructor(
         biniHit: BiniHit?,
     ): LyricsResult.Success? = when (preferred) {
         com.lastwave.app.data.local.LyricsProvider.LASTWAVE ->
-            fetchWordFromYukthi Music(title, artist, album, durationSeconds, isrc, videoId)
+            fetchWordFromLastWave(title, artist, album, durationSeconds, isrc, videoId)
         com.lastwave.app.data.local.LyricsProvider.LRC_RED ->
             fetchWordFromLrcRed(title, artist, album, durationSeconds, isrc, biniHit, videoId)
         com.lastwave.app.data.local.LyricsProvider.APPLE_MUSIC ->
@@ -631,7 +631,7 @@ class LyricsRepository @Inject constructor(
         spotifyLyricsApi.fetchLyrics(title, artist, durationSeconds)
     }.getOrNull()
 
-    private suspend fun fetchWordFromYukthi Music(
+    private suspend fun fetchWordFromLastWave(
         title: String,
         artist: String,
         album: String?,

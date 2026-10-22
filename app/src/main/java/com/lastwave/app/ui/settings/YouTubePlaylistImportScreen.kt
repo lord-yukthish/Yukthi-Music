@@ -241,7 +241,7 @@ fun YouTubePlaylistImportScreen(
                 modifier = Modifier.fillMaxSize(),
             ) {
                 // TAB 0: The connected account's own library playlists —
-                // select any and import them into Yukthi Music.
+                // select any and import them into LastWave.
                 if (state.selectedTab == ImportTab.LIBRARY) {
                     when {
                         state.isLoadingLibrary -> item {

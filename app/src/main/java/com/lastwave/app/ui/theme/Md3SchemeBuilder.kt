@@ -103,10 +103,10 @@ object Md3SchemeBuilder {
     )
 
     /**
-     * Yukthi Music Signature Dark Scheme built specifically around the official app logo colors:
+     * LastWave Signature Dark Scheme built specifically around the official app logo colors:
      * Electric Lime (#C9FB00) and Deep Obsidian Teal (#012226).
      */
-    fun buildYukthi MusicDarkScheme(amoled: Boolean, @Suppress("UNUSED_PARAMETER") liquidGlass: Boolean = false): ColorScheme {
+    fun buildLastWaveDarkScheme(amoled: Boolean, @Suppress("UNUSED_PARAMETER") liquidGlass: Boolean = false): ColorScheme {
         val brandLime = Color(0xFFC9FB00)
         val darkTeal = Color(0xFF012226)
         val deepTeal = Color(0xFF01181B)
@@ -160,9 +160,9 @@ object Md3SchemeBuilder {
     }
 
     /**
-     * Yukthi Music Signature Light Scheme built around the official app logo colors.
+     * LastWave Signature Light Scheme built around the official app logo colors.
      */
-    fun buildYukthi MusicLightScheme(@Suppress("UNUSED_PARAMETER") liquidGlass: Boolean = false): ColorScheme {
+    fun buildLastWaveLightScheme(@Suppress("UNUSED_PARAMETER") liquidGlass: Boolean = false): ColorScheme {
         val brandLime = Color(0xFFC9FB00)
         val darkTeal = Color(0xFF012226)
 

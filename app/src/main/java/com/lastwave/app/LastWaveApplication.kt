@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltAndroidApp
-class Yukthi MusicApplication : Application(), ImageLoaderFactory {
+class LastWaveApplication : Application(), ImageLoaderFactory {
 
     @Inject lateinit var themeRepository: dagger.Lazy<ThemeRepository>
     @Inject lateinit var applicationScope: CoroutineScope
@@ -95,7 +95,7 @@ class Yukthi MusicApplication : Application(), ImageLoaderFactory {
                 }?.forEach { file -> runCatching { file.delete() } }
             }
             runCatching { likedSongsManager.get().start() }
-                .onFailure { com.lastwave.app.diagnostics.AppLog.e("Yukthi MusicStartup", "Liked Songs startup disabled", it) }
+                .onFailure { com.lastwave.app.diagnostics.AppLog.e("LastWaveStartup", "Liked Songs startup disabled", it) }
         }
         // Never create BotGuard's headless WebView during app launch. Some
         // Android 11 OEM devices have a missing/updating WebView provider,
@@ -105,7 +105,7 @@ class Yukthi MusicApplication : Application(), ImageLoaderFactory {
         applicationScope.launch {
             delay(OPTIONAL_STARTUP_DELAY_MS)
             runCatching { ytMusicSyncManager.get().start() }
-                .onFailure { com.lastwave.app.diagnostics.AppLog.e("Yukthi MusicStartup", "YT sync startup disabled", it) }
+                .onFailure { com.lastwave.app.diagnostics.AppLog.e("LastWaveStartup", "YT sync startup disabled", it) }
         }
         // YouTube Music playback-history sync (no-ops until an account is
         // connected AND history sync is enabled in Settings — on by default).
@@ -113,7 +113,7 @@ class Yukthi MusicApplication : Application(), ImageLoaderFactory {
         applicationScope.launch {
             delay(OPTIONAL_STARTUP_DELAY_MS)
             runCatching { ytMusicHistorySyncManager.get().start() }
-                .onFailure { com.lastwave.app.diagnostics.AppLog.e("Yukthi MusicStartup", "YT history sync startup disabled", it) }
+                .onFailure { com.lastwave.app.diagnostics.AppLog.e("LastWaveStartup", "YT history sync startup disabled", it) }
         }
         // Reconcile public download directory & MediaStore with local database
         // asynchronously on startup so offline playback works immediately.
@@ -121,7 +121,7 @@ class Yukthi MusicApplication : Application(), ImageLoaderFactory {
             delay(OPTIONAL_STARTUP_DELAY_MS)
             runCatching { trackDownloadManager.get().restoreDownloadsAfterReinstall() }
             runCatching { trackDownloadManager.get().syncDownloadsFromStorage() }
-                .onFailure { com.lastwave.app.diagnostics.AppLog.e("Yukthi MusicStartup", "Download sync startup failed", it) }
+                .onFailure { com.lastwave.app.diagnostics.AppLog.e("LastWaveStartup", "Download sync startup failed", it) }
         }
         // Discord Rich Presence (no-ops unless the switch is on AND the Discord
         // app is installed and signed in). Observes playback state only; it can
@@ -130,10 +130,10 @@ class Yukthi MusicApplication : Application(), ImageLoaderFactory {
         applicationScope.launch {
             delay(OPTIONAL_STARTUP_DELAY_MS)
             runCatching { discordPresenceManager.get().start() }
-                .onFailure { com.lastwave.app.diagnostics.AppLog.e("Yukthi MusicStartup", "Discord presence startup disabled", it) }
+                .onFailure { com.lastwave.app.diagnostics.AppLog.e("LastWaveStartup", "Discord presence startup disabled", it) }
         }
         // A widget is a separate RemoteViews surface, so it needs an explicit
-        // refresh whenever Yukthi Music's live theme changes. The widget's palette
+        // refresh whenever LastWave's live theme changes. The widget's palette
         // only consumes primary/onPrimary (every other role is fixed), so
         // dedupe on those — otherwise ANY DataStore settings change (pins,
         // toggles, font) rebuilt every placed widget.
@@ -144,12 +144,12 @@ class Yukthi MusicApplication : Application(), ImageLoaderFactory {
                     .map { it.colorScheme.primary to it.colorScheme.onPrimary }
                     .distinctUntilChanged()
                     .collect {
-                        WidgetUpdater.refreshTheme(this@Yukthi MusicApplication)
+                        WidgetUpdater.refreshTheme(this@LastWaveApplication)
                     }
             } catch (cancellation: CancellationException) {
                 throw cancellation
             } catch (error: Throwable) {
-                com.lastwave.app.diagnostics.AppLog.e("Yukthi MusicStartup", "Widget theme observer disabled", error)
+                com.lastwave.app.diagnostics.AppLog.e("LastWaveStartup", "Widget theme observer disabled", error)
             }
         }
         StartupTrail.mark("app.onCreate.end")
@@ -185,10 +185,10 @@ class Yukthi MusicApplication : Application(), ImageLoaderFactory {
             .readTimeout(10, java.util.concurrent.TimeUnit.SECONDS)
             .build()
         } catch (error: Exception) {
-            com.lastwave.app.diagnostics.AppLog.e("Yukthi MusicStartup", "Shared artwork client unavailable; using isolated client", error)
+            com.lastwave.app.diagnostics.AppLog.e("LastWaveStartup", "Shared artwork client unavailable; using isolated client", error)
             okhttp3.OkHttpClient.Builder().build()
         } catch (error: LinkageError) {
-            com.lastwave.app.diagnostics.AppLog.e("Yukthi MusicStartup", "Shared artwork client unsupported; using isolated client", error)
+            com.lastwave.app.diagnostics.AppLog.e("LastWaveStartup", "Shared artwork client unsupported; using isolated client", error)
             okhttp3.OkHttpClient.Builder().build()
         }
 

@@ -12,10 +12,10 @@ import kotlinx.serialization.json.put
 import kotlinx.serialization.json.putJsonArray
 
 /**
- * Discord Rich Presence ("Listening to Yukthi Music") payload builder.
+ * Discord Rich Presence ("Listening to LastWave") payload builder.
  *
  * Ported field for field from the desktop client
- * (`Yukthi Music-Desktop/lib/features/presence/discord_presence_service.dart`) so a
+ * (`LastWave-Desktop/lib/features/presence/discord_presence_service.dart`) so a
  * user's profile reads identically on both apps: same application id, same
  * `type`, same line layout, same two buttons, same asset keys, same clip
  * lengths. Only the transport differs (see [DiscordSdkTransport]) — on Android
@@ -24,13 +24,13 @@ import kotlinx.serialization.json.putJsonArray
  *
  * The card one [buildActivity] call produces:
  * ```
- *   Listening to Yukthi Music            <- type 2 (listening) + name
+ *   Listening to LastWave            <- type 2 (listening) + name
  *   ┌────┐  Song title               <- details
  *   │art │  Artist                   <- state, first line
  *   └────┘   · Hi-Res Lossless · 24-bit · 96 kHz    <- state, second line
  *           ▁▁▁▁▁▁ 1:04 / 3:47       <- from the timestamps
- *   [ Listen On Yukthi Music ]           <- opens the track
- *   [ Get Yukthi Music ]                 <- opens this project's releases
+ *   [ Listen On LastWave ]           <- opens the track
+ *   [ Get LastWave ]                 <- opens this project's releases
  * ```
  *
  * One cover art only: no small_image/small_text play/pause badge is ever sent.
@@ -55,10 +55,10 @@ object DiscordPresence {
      */
     const val APPLICATION_ID = "1552563991426105414"
 
-    const val PROJECT_URL = "https://github.com/Clash-Projects/Yukthi Music-Native"
+    const val PROJECT_URL = "https://github.com/Clash-Projects/LastWave-Native"
     const val RELEASES_URL = "$PROJECT_URL/releases"
-    const val DEFAULT_BUTTON_1 = "Listen On Yukthi Music"
-    const val DEFAULT_BUTTON_2 = "Get Yukthi Music"
+    const val DEFAULT_BUTTON_1 = "Listen On LastWave"
+    const val DEFAULT_BUTTON_2 = "Get LastWave"
 
     /** Discord truncates nothing for us: over-long fields are dropped. */
     const val MAX_FIELD = 120
@@ -79,7 +79,7 @@ object DiscordPresence {
      */
     const val RETRY_INTERVAL_MS = 15_000L
 
-    /** Asset key the desktop client uploads as the Yukthi Music logo. */
+    /** Asset key the desktop client uploads as the LastWave logo. */
     const val FALLBACK_ASSET = "logo"
 
     /** 2 = "Listening to". */

@@ -26,7 +26,7 @@ import kotlinx.coroutines.sync.withLock
  * Publishes what is playing to Discord as a Rich Presence activity.
  *
  * Behaviour is ported from the desktop client
- * (`Yukthi Music-Desktop/lib/features/presence/discord_presence_service.dart`):
+ * (`LastWave-Desktop/lib/features/presence/discord_presence_service.dart`):
  * push on track or play-state change, never on the position ticker; stay silent
  * when Discord is absent, refuses, or rate-limits; clear the card the moment
  * playback stops or the switch is turned off.

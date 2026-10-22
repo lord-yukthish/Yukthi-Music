@@ -142,7 +142,7 @@ class BetterLyricsApi @Inject constructor(
         }
         val request = Request.Builder()
             .url(builder.build())
-            .header("User-Agent", "Yukthi Music-Android/1.0 (https://github.com/clash-projects/lastwave)")
+            .header("User-Agent", "LastWave-Android/1.0 (https://github.com/clash-projects/lastwave)")
             .header("Accept", "application/json")
             .get()
             .build()

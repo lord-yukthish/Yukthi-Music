@@ -102,7 +102,7 @@ object CrashRecorder {
 
         file.writeText(buildString {
             appendLine(RULE)
-            appendLine(" Yukthi Music crash report")
+            appendLine(" LastWave crash report")
             appendLine(RULE)
             appendLine("Crash type   : ${type.label}")
             appendLine("Recorded at  : ${stamp(now)}")

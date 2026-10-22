@@ -256,7 +256,7 @@ class FileExportHelper @Inject constructor(
     }
 
     /**
-     * Saves a rendered card bitmap to Pictures/Yukthi Music via MediaStore.Images
+     * Saves a rendered card bitmap to Pictures/LastWave via MediaStore.Images
      * with IS_PENDING handling for API 29+.
      */
     suspend fun saveImageToGallery(
@@ -267,7 +267,7 @@ class FileExportHelper @Inject constructor(
             val resolver = context.contentResolver
             val sanitized = sanitizeFilename(title)
             val filename = "lyrics_${sanitized}_${System.currentTimeMillis()}.png"
-            val relativePath = "${Environment.DIRECTORY_PICTURES}/Yukthi Music"
+            val relativePath = "${Environment.DIRECTORY_PICTURES}/LastWave"
 
             val values = ContentValues().apply {
                 put(MediaStore.Images.Media.DISPLAY_NAME, filename)
@@ -304,7 +304,7 @@ class FileExportHelper @Inject constructor(
 
     /**
      * Auto-saves a generated playlist as an M3U file to the public
-     * Download/Yukthi Music/ folder — separate from [saveToDocuments]'s
+     * Download/LastWave/ folder — separate from [saveToDocuments]'s
      * app-private export copy, and visible outside the app / after
      * uninstall. Always runs off the main thread. Never throws: genuine
      * failures come back as [Result.failure] for the caller to decide

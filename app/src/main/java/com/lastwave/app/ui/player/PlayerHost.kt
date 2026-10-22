@@ -3287,7 +3287,7 @@ private fun FullPlayer(
             ),
             playableTrack = track,
             onDismiss = { showTrackMenu = false },
-            onPlayInYukthi Music = { player.play(track, sourceLabel = state.sourceLabel) },
+            onPlayInLastWave = { player.play(track, sourceLabel = state.sourceLabel) },
         )
     }
     if (showLyricsOffsetDialog && onSetLyricsOffsetMs != null) {
@@ -4350,7 +4350,7 @@ private fun PlayerUtilityControls(state: MusicPlayerState, player: MusicPlayer, 
                 signalPath.bypassRequested && !signalPath.usbExclusiveActive -> modeMixer
                 else -> null
             }
-            // AutoEQ: the correction is Yukthi Music's own, so name the route + EQ.
+            // AutoEQ: the correction is LastWave's own, so name the route + EQ.
             val shownMode = if (signalPath.parametricEqActive) {
                 when {
                     signalPath.internalDirectActive -> "$modeDirect + EQ"

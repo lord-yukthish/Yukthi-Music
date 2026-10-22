@@ -104,7 +104,7 @@ class LrcRedLyricsApi @Inject constructor(
     private suspend fun fetchUrl(url: String): String? {
         val request = Request.Builder()
             .url(url)
-            .header("User-Agent", "Yukthi Music-Android/1.0 (https://github.com/clash-projects/lastwave)")
+            .header("User-Agent", "LastWave-Android/1.0 (https://github.com/clash-projects/lastwave)")
             .header("Accept", "*/*")
             .get()
             .build()

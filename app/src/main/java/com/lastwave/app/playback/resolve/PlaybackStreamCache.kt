@@ -178,6 +178,6 @@ class PlaybackStreamCache(
 
     private companion object {
         const val MAX_ENTRIES = 128
-        const val TAG = "Yukthi MusicResolver"
+        const val TAG = "LastWaveResolver"
     }
 }

@@ -7,11 +7,11 @@
 **Next-Gen YouTube Music Client with Algorithmic Smart Playlist Generator, Real-Time Synced Lyrics & Universal Last.fm Scrobbler for Android.**
 
 <p align="center">
-  <a href="https://github.com/Clash-Projects/Yukthi Music-native/stargazers">
-    <img src="https://img.shields.io/github/stars/Clash-Projects/Yukthi Music-native?style=for-the-badge&color=ffd0b0&labelColor=2d2d2d" alt="Stars" />
+  <a href="https://github.com/Clash-Projects/LastWave-native/stargazers">
+    <img src="https://img.shields.io/github/stars/Clash-Projects/LastWave-native?style=for-the-badge&color=ffd0b0&labelColor=2d2d2d" alt="Stars" />
   </a>
-  <a href="https://github.com/Clash-Projects/Yukthi Music-native/network/members">
-    <img src="https://img.shields.io/github/forks/Clash-Projects/Yukthi Music-native?style=for-the-badge&color=ffb4a2&labelColor=2d2d2d" alt="Forks" />
+  <a href="https://github.com/Clash-Projects/LastWave-native/network/members">
+    <img src="https://img.shields.io/github/forks/Clash-Projects/LastWave-native?style=for-the-badge&color=ffb4a2&labelColor=2d2d2d" alt="Forks" />
   </a>
   <a href="#">
     <img src="https://img.shields.io/badge/Client-YouTube%20Music-FF0000?style=for-the-badge&logo=youtubemusic&logoColor=white&labelColor=2d2d2d" alt="YouTube Music Client" />
@@ -26,11 +26,11 @@
 
 <p align="center">
   <a href="https://trendshift.io/repositories/197973?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-197973" target="_blank" rel="noopener noreferrer">
-    <img src="https://trendshift.io/api/badge/trendshift/repositories/197973/daily?language=Kotlin" alt="Clash-Projects%2FYukthi Music-Native | Trendshift" width="250" height="55" />
+    <img src="https://trendshift.io/api/badge/trendshift/repositories/197973/daily?language=Kotlin" alt="Clash-Projects%2FLastWave-Native | Trendshift" width="250" height="55" />
   </a>
   &nbsp;
   <a href="https://trendshift.io/repositories/197973?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-197973" target="_blank" rel="noopener noreferrer">
-    <img src="https://trendshift.io/api/badge/trendshift/repositories/197973/weekly?language=Kotlin" alt="Clash-Projects%2FYukthi Music-Native | Trendshift" width="250" height="55" />
+    <img src="https://trendshift.io/api/badge/trendshift/repositories/197973/weekly?language=Kotlin" alt="Clash-Projects%2FLastWave-Native | Trendshift" width="250" height="55" />
   </a>
 </p>
 
@@ -114,8 +114,8 @@ Built with **Material 3 Expressive**, Yukthi Music combines effortless ad-free s
 
 ## <img src="https://api.iconify.design/lucide:rocket.svg?color=%23C6F100" width="20" height="20" align="center" /> Getting Started
 
-1. Download the latest APK from the **[Releases](https://github.com/Clash-Projects/Yukthi Music-native/releases)** or **[Actions](https://github.com/Clash-Projects/Yukthi Music-native/actions)** tab.
-2. Install `Yukthi Music-v4.3.1-release.apk` on your Android device (Android 7.0+).
+1. Download the latest APK from the **[Releases](https://github.com/Clash-Projects/LastWave-native/releases)** or **[Actions](https://github.com/Clash-Projects/LastWave-native/actions)** tab.
+2. Install `YukthiMusic-v4.3.1-release.apk` on your Android device (Android 7.0+).
 3. Connect your Last.fm account in **Settings → Integrations** to unlock the scrobbler, taste mixes, and personalized discovery radar.
 4. Enjoy ad-free streaming and smart playlist generation!
 
@@ -124,8 +124,8 @@ Built with **Material 3 Expressive**, Yukthi Music combines effortless ad-free s
 ## <img src="https://api.iconify.design/lucide:terminal.svg?color=%23C6F100" width="20" height="20" align="center" /> Building from Source
 
 ```bash
-git clone https://github.com/Clash-Projects/Yukthi Music-native.git
-cd Yukthi Music-native
+git clone https://github.com/Clash-Projects/LastWave-native.git
+cd LastWave-native
 ./gradlew assembleRelease
 ```
 
@@ -157,4 +157,4 @@ cd Yukthi Music-native
   <p><b>Yukthi Music</b> is built with ❤️ by <a href="https://github.com/duxtami">Duxtami</a> & <a href="https://github.com/ajisth69">Ajisth</a>.</p>
 </div>
 
-[![GitGem](https://gitgem.org/api/badge/github/Clash-Projects/Yukthi Music-Native.svg)](https://gitgem.org/github/Clash-Projects/Yukthi Music-Native)
+[![GitGem](https://gitgem.org/api/badge/github/Clash-Projects/LastWave-Native.svg)](https://gitgem.org/github/Clash-Projects/LastWave-Native)

@@ -32,7 +32,7 @@ class ThemeViewModel @Inject constructor(
         themeRepository.setThemeMode(mode)
     }
 
-    fun setYukthi MusicTheme(enabled: Boolean) = viewModelScope.launch {
-        themeRepository.setYukthi MusicTheme(enabled)
+    fun setLastWaveTheme(enabled: Boolean) = viewModelScope.launch {
+        themeRepository.setLastWaveTheme(enabled)
     }
 }

@@ -42,7 +42,7 @@ data class JamUiState(
 )
 
 @HiltViewModel
-class Yukthi MusicJamViewModel @Inject constructor(
+class LastWaveJamViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val jamRepository: JamRepository,
     private val musicPlayer: MusicPlayer,

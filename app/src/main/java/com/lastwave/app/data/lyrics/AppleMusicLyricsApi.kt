@@ -64,7 +64,7 @@ private data class ITunesSong(
  * timings (`part: true` = continuation of the previous word, e.g.
  * "with"+"drawals"). The envelope's `lrc`/`plain` fields are the fallback
  * when a track has no syllable timings. Every request identifies as
- * `Yukthi Music` in User-Agent.
+ * `LastWave` in User-Agent.
  */
 @Singleton
 class AppleMusicLyricsApi @Inject constructor(

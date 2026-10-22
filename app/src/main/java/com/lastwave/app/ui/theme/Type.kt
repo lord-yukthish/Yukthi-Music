@@ -53,7 +53,7 @@ private fun gsFlex(
     ),
 )
 
-val Yukthi MusicTypography = Typography(
+val LastWaveTypography = Typography(
     displayLarge = TextStyle(fontFamily = gsFlex(weight = 760f, width = 122f, round = 42f, opticalSize = 57f), fontWeight = FontWeight.Bold, fontSize = 57.sp, lineHeight = 64.sp),
     displayMedium = TextStyle(fontFamily = gsFlex(weight = 740f, width = 120f, round = 40f, opticalSize = 45f), fontWeight = FontWeight.Bold, fontSize = 45.sp, lineHeight = 52.sp),
     displaySmall = TextStyle(fontFamily = gsFlex(weight = 720f, width = 118f, round = 38f, opticalSize = 36f), fontWeight = FontWeight.Bold, fontSize = 36.sp, lineHeight = 44.sp),
@@ -73,7 +73,7 @@ val Yukthi MusicTypography = Typography(
 
 /**
  * The "Use Application Font" toggle's off-state: plain platform default
- * (FontFamily.Default), same sizes/weights as [Yukthi MusicTypography] so
+ * (FontFamily.Default), same sizes/weights as [LastWaveTypography] so
  * turning the toggle off changes ONLY the typeface, not the whole scale.
  */
 val SystemTypography = Typography(

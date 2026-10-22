@@ -32,7 +32,7 @@ val LocalIsDarkTheme = staticCompositionLocalOf { true }
  * (nav bar, player, headers).
  */
 @Composable
-fun Yukthi MusicTheme(
+fun LastWaveTheme(
     themeState: ThemeUiState,
     content: @Composable () -> Unit,
 ) {
@@ -49,7 +49,7 @@ fun Yukthi MusicTheme(
     val context = LocalContext.current
     val useSystemDynamic = themeState.mode == AccentMode.DYNAMIC &&
         !themeState.isNowPlayingThemed &&
-        !themeState.isYukthi MusicTheme &&
+        !themeState.isLastWaveTheme &&
         Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
     val systemDark = if (useSystemDynamic) {
         val base = dynamicDarkColorScheme(context)
@@ -64,8 +64,8 @@ fun Yukthi MusicTheme(
     } else null
     val systemLight = if (useSystemDynamic) dynamicLightColorScheme(context) else null
     val activeColorScheme = when {
-        themeState.isYukthi MusicTheme && isDark -> themeState.darkColorScheme
-        themeState.isYukthi MusicTheme && !isDark -> themeState.lightColorScheme
+        themeState.isLastWaveTheme && isDark -> themeState.darkColorScheme
+        themeState.isLastWaveTheme && !isDark -> themeState.lightColorScheme
         systemDark != null && isDark -> systemDark
         systemLight != null && !isDark -> systemLight
         isDark -> themeState.darkColorScheme
@@ -91,8 +91,8 @@ fun Yukthi MusicTheme(
 
     MaterialTheme(
         colorScheme = activeColorScheme,
-        typography = if (themeState.useCustomFont) Yukthi MusicTypography else SystemTypography,
-        shapes = Yukthi MusicShapes,
+        typography = if (themeState.useCustomFont) LastWaveTypography else SystemTypography,
+        shapes = LastWaveShapes,
     ) {
         Surface(
             modifier = Modifier.fillMaxSize(),

@@ -29,7 +29,7 @@ data class TelemetryPingPayload(
 )
 
 /**
- * Links native playback on Yukthi Music Android to the Yukthi Music Live Telemetry platform
+ * Links native playback on LastWave Android to the LastWave Live Telemetry platform
  * (telemetry.clashprojects.qd.je).
  *
  * Anonymous, zero-IP logging, ephemeral 60s RAM bucket:
@@ -95,7 +95,7 @@ class LiveTelemetryRepository @Inject constructor(
             val request = Request.Builder()
                 .url(PING_ENDPOINT)
                 .post(body)
-                .header("User-Agent", "Yukthi Music-Android/1.0")
+                .header("User-Agent", "LastWave-Android/1.0")
                 .header("Accept", "application/json")
                 .build()
 

@@ -22,8 +22,8 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Group
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.SearchOff
-import com.lastwave.app.ui.jam.Yukthi MusicJamSheet
-import com.lastwave.app.ui.jam.Yukthi MusicJamViewModel
+import com.lastwave.app.ui.jam.LastWaveJamSheet
+import com.lastwave.app.ui.jam.LastWaveJamViewModel
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -463,7 +463,7 @@ fun SettingsScreen(
     onOpenSpotifyLogin: () -> Unit = {},
     onOpenSpotifyTokenImport: () -> Unit = {},
     viewModel: SettingsViewModel = hiltViewModel(),
-    jamViewModel: Yukthi MusicJamViewModel = hiltViewModel(),
+    jamViewModel: LastWaveJamViewModel = hiltViewModel(),
 ) {
     val session by viewModel.session.collectAsStateWithLifecycle()
     val jamUiState by jamViewModel.uiState.collectAsStateWithLifecycle()
@@ -1217,8 +1217,8 @@ fun SettingsScreen(
                                 iconTint = Color(0xFF012226),
                                 title = stringResource(R.string.settings_lastwave_theme),
                                 subtitle = stringResource(R.string.settings_lastwave_theme_sub),
-                                checked = theme?.isYukthi MusicTheme ?: false,
-                                onCheckedChange = viewModel::setYukthi MusicTheme,
+                                checked = theme?.isLastWaveTheme ?: false,
+                                onCheckedChange = viewModel::setLastWaveTheme,
                                 position = position,
                                 isHighlighted = (highlightedSettingId == "appearance.lastwave_theme"),
                             )
@@ -1240,10 +1240,10 @@ fun SettingsScreen(
                                 iconTint = MaterialTheme.colorScheme.onPrimaryContainer,
                                 title = stringResource(R.string.settings_dynamic_color),
                                 subtitle = stringResource(R.string.settings_dynamic_color_sub),
-                                checked = theme?.mode == AccentMode.DYNAMIC && !(theme?.isYukthi MusicTheme ?: false),
+                                checked = theme?.mode == AccentMode.DYNAMIC && !(theme?.isLastWaveTheme ?: false),
                                 onCheckedChange = { enabled ->
-                                    if (enabled && (theme?.isYukthi MusicTheme == true)) {
-                                        viewModel.setYukthi MusicTheme(false)
+                                    if (enabled && (theme?.isLastWaveTheme == true)) {
+                                        viewModel.setLastWaveTheme(false)
                                     }
                                     viewModel.setAccentMode(if (enabled) AccentMode.DYNAMIC else AccentMode.MANUAL)
                                 },
@@ -1333,18 +1333,18 @@ fun SettingsScreen(
                         Column(Modifier.padding(20.dp)) {
                             AccentPresetGrid(
                                 currentMode = theme?.mode ?: AccentMode.MANUAL,
-                                isYukthi MusicTheme = theme?.isYukthi MusicTheme ?: false,
+                                isLastWaveTheme = theme?.isLastWaveTheme ?: false,
                                 selectedHex = theme?.accentColorHex,
                                 onPickPreset = { hex ->
-                                    if (theme?.isYukthi MusicTheme == true) {
-                                        viewModel.setYukthi MusicTheme(false)
+                                    if (theme?.isLastWaveTheme == true) {
+                                        viewModel.setLastWaveTheme(false)
                                     }
                                     viewModel.setManualAccent(Color(android.graphics.Color.parseColor(hex)))
                                 },
-                                onPickYukthi Music = { viewModel.setYukthi MusicTheme(true) },
+                                onPickLastWave = { viewModel.setLastWaveTheme(true) },
                                 onPickMono = {
-                                    if (theme?.isYukthi MusicTheme == true) {
-                                        viewModel.setYukthi MusicTheme(false)
+                                    if (theme?.isLastWaveTheme == true) {
+                                        viewModel.setLastWaveTheme(false)
                                     }
                                     viewModel.setAccentMode(AccentMode.MONOCHROME)
                                 },
@@ -1867,8 +1867,8 @@ fun SettingsScreen(
                     // Discord presence, next to Last.fm because both are "tell
                     // other services what I'm listening to" integrations and
                     // neither is required for playback. Unlike Last.fm this
-                    // needs no account in Yukthi Music — it publishes as the
-                    // Yukthi Music application through the Discord app itself, so
+                    // needs no account in LastWave — it publishes as the
+                    // LastWave application through the Discord app itself, so
                     // the copy says exactly that.
                     SettingsToggleCard(
                         icon = Icons.Filled.Public,
@@ -2289,9 +2289,9 @@ fun SettingsScreen(
                         iconContainer = MaterialTheme.colorScheme.secondaryContainer,
                         iconTint = MaterialTheme.colorScheme.onSecondaryContainer,
                         title = stringResource(R.string.settings_source_code),
-                        subtitle = "github.com/Clash-Projects/Yukthi Music-native",
+                        subtitle = "github.com/Clash-Projects/LastWave-native",
                         onClick = {
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Clash-Projects/Yukthi Music-native"))
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Clash-Projects/LastWave-native"))
                             if (!startActivitySafely(context, intent)) {
                                 viewModel.showToast(context.getString(R.string.toast_no_browser_plain))
                             }
@@ -2472,7 +2472,7 @@ fun SettingsScreen(
     }
 
     if (showJamSheet) {
-        Yukthi MusicJamSheet(
+        LastWaveJamSheet(
             viewModel = jamViewModel,
             onDismiss = { showJamSheet = false },
         )
@@ -3967,10 +3967,10 @@ private fun LastFmIntegrationCard(
 @Composable
 private fun AccentPresetGrid(
     currentMode: AccentMode,
-    isYukthi MusicTheme: Boolean = false,
+    isLastWaveTheme: Boolean = false,
     selectedHex: String?,
     onPickPreset: (String) -> Unit,
-    onPickYukthi Music: () -> Unit = {},
+    onPickLastWave: () -> Unit = {},
     onPickMono: () -> Unit,
     onPickCustom: () -> Unit,
 ) {
@@ -3979,14 +3979,14 @@ private fun AccentPresetGrid(
     // happens to hex-match by coincidence.
     fun isPresetSelected(hex: String) =
         if (hex.equals("#C9FB00", ignoreCase = true)) {
-            isYukthi MusicTheme || (currentMode == AccentMode.MANUAL && selectedHex?.equals(hex, ignoreCase = true) == true)
+            isLastWaveTheme || (currentMode == AccentMode.MANUAL && selectedHex?.equals(hex, ignoreCase = true) == true)
         } else {
-            !isYukthi MusicTheme && currentMode == AccentMode.MANUAL && selectedHex?.equals(hex, ignoreCase = true) == true
+            !isLastWaveTheme && currentMode == AccentMode.MANUAL && selectedHex?.equals(hex, ignoreCase = true) == true
         }
-    val customSelected = !isYukthi MusicTheme && currentMode == AccentMode.MANUAL &&
+    val customSelected = !isLastWaveTheme && currentMode == AccentMode.MANUAL &&
         selectedHex != null &&
         ACCENT_PRESETS.none { it.hex.equals(selectedHex, ignoreCase = true) }
-    val monoSelected = !isYukthi MusicTheme && currentMode == AccentMode.MONOCHROME
+    val monoSelected = !isLastWaveTheme && currentMode == AccentMode.MONOCHROME
 
     // One unified 4-column tile grid — six color presets plus Mono and
     // Custom as tiles of their own, not a separate row of pill buttons.
@@ -3998,7 +3998,7 @@ private fun AccentPresetGrid(
                 modifier = Modifier.weight(1f),
                 onClick = {
                     if (preset.hex.equals("#C9FB00", ignoreCase = true)) {
-                        onPickYukthi Music()
+                        onPickLastWave()
                     } else {
                         onPickPreset(preset.hex)
                     }
@@ -4033,7 +4033,7 @@ private fun AccentPresetGrid(
                 modifier = Modifier.weight(1f),
                 onClick = {
                     if (preset.hex.equals("#C9FB00", ignoreCase = true)) {
-                        onPickYukthi Music()
+                        onPickLastWave()
                     } else {
                         onPickPreset(preset.hex)
                     }
@@ -4988,7 +4988,7 @@ private fun EqNativeSlider(
     }
 }
 
-/** Controls which connected-account playlists appear in Yukthi Music. This is
+/** Controls which connected-account playlists appear in LastWave. This is
  * intentionally independent from importing and two-way sync. */
 /**
  * Lets the user pick which YouTube channel/profile answers inside the

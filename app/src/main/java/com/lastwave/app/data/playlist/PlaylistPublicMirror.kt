@@ -39,7 +39,7 @@ data class PlaylistMirrorFile(
     val playlists: List<PlaylistMirrorEntry>,
 )
 
-/** Public Downloads/Yukthi Music JSON mirror. Room remains the fast runtime
+/** Public Downloads/LastWave JSON mirror. Room remains the fast runtime
  * source; this file is the uninstall and destructive-migration recovery. */
 @Singleton
 class PlaylistPublicMirror @Inject constructor(

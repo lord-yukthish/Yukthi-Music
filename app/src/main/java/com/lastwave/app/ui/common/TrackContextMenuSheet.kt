@@ -288,7 +288,7 @@ fun TrackContextMenuSheet(
     playableTrack: PlayableTrack? = null,
     onDismiss: () -> Unit,
     playbackSourceLabel: String = "Yukthi Music",
-    onPlayInYukthi Music: (() -> Unit)? = null,
+    onPlayInLastWave: (() -> Unit)? = null,
     onStartMix: ((trackName: String, artistName: String) -> Unit)? = null,
     onExploreGenre: ((genre: String) -> Unit)? = null,
     onDeleteScrobble: ((trackName: String, artistName: String) -> Unit)? = null,
@@ -352,14 +352,14 @@ fun TrackContextMenuSheet(
                 onDismiss()
             },
             onPlayTrack = {
-                onPlayInYukthi Music?.invoke() ?: musicPlayer.play(playable, sourceLabel = playbackSourceLabel)
+                onPlayInLastWave?.invoke() ?: musicPlayer.play(playable, sourceLabel = playbackSourceLabel)
             },
         )
         return
     }
 
     if (showJamSheet) {
-        com.lastwave.app.ui.jam.Yukthi MusicJamSheet(
+        com.lastwave.app.ui.jam.LastWaveJamSheet(
             onDismiss = {
                 showJamSheet = false
                 onDismiss()
@@ -586,7 +586,7 @@ fun TrackContextMenuSheet(
                             label = stringResource(R.string.menu_quick_play),
                             position = pos,
                         ) {
-                            onPlayInYukthi Music?.invoke() ?: musicPlayer.play(playable, sourceLabel = playbackSourceLabel)
+                            onPlayInLastWave?.invoke() ?: musicPlayer.play(playable, sourceLabel = playbackSourceLabel)
                             onDismiss()
                         }
                     }

@@ -114,7 +114,7 @@ data class SignalPathReport(
     val directToHal: Boolean = false,
     val internalSession: InternalDirectSession? = null,
     val bypassRequested: Boolean = false,
-    /** AutoEQ is applied by Yukthi Music: never bit-perfect, but still "Direct + EQ". */
+    /** AutoEQ is applied by LastWave: never bit-perfect, but still "Direct + EQ". */
     val parametricEqActive: Boolean = false,
     // Poweramp pipeline fields:
     val outputEngineName: String = "Android AudioTrack",
@@ -264,7 +264,7 @@ fun evaluateSignalPath(i: SignalPathInput): SignalPathReport {
     }
 
     // 3b — AutoEQ / parametric EQ: a correction the user asked for. It runs
-    // in Yukthi Music before any direct output, so the mixer is still bypassed,
+    // in LastWave before any direct output, so the mixer is still bypassed,
     // but the samples are no longer the source's.
     if (i.parametricEqActive) {
         checks += PathCheck(
