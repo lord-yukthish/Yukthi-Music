@@ -42,7 +42,7 @@ data class JamUiState(
 )
 
 @HiltViewModel
-class LastWaveJamViewModel @Inject constructor(
+class Yukthi MusicJamViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val jamRepository: JamRepository,
     private val musicPlayer: MusicPlayer,
@@ -168,7 +168,7 @@ class LastWaveJamViewModel @Inject constructor(
                             durationMs = event.track.durationMs ?: 0L,
                             videoId = event.track.id,
                         )
-                        musicPlayer.play(playable, sourceLabel = "LastWave Jam")
+                        musicPlayer.play(playable, sourceLabel = "Yukthi Music Jam")
                         if (event.positionMs > 0) {
                             musicPlayer.seekTo(event.positionMs)
                         }
@@ -186,7 +186,7 @@ class LastWaveJamViewModel @Inject constructor(
                                 durationMs = remoteTrack.durationMs ?: 0L,
                                 videoId = remoteTrack.id,
                             )
-                            musicPlayer.play(playable, sourceLabel = "LastWave Jam")
+                            musicPlayer.play(playable, sourceLabel = "Yukthi Music Jam")
                         }
                         musicPlayer.seekTo(event.playback.positionMs)
                         if (!event.playback.isPlaying) {
@@ -231,11 +231,11 @@ class LastWaveJamViewModel @Inject constructor(
         val inviteLink = "lastwave://jam?code=$roomCode"
         val shareIntent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
-            putExtra(Intent.EXTRA_SUBJECT, "Join my LastWave Jam session")
-            putExtra(Intent.EXTRA_TEXT, "Join my LastWave Jam session! Room code: $roomCode\n$inviteLink")
+            putExtra(Intent.EXTRA_SUBJECT, "Join my Yukthi Music Jam session")
+            putExtra(Intent.EXTRA_TEXT, "Join my Yukthi Music Jam session! Room code: $roomCode\n$inviteLink")
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
-        val chooser = Intent.createChooser(shareIntent, "Share LastWave Jam Invite").apply {
+        val chooser = Intent.createChooser(shareIntent, "Share Yukthi Music Jam Invite").apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
         context.startActivity(chooser)

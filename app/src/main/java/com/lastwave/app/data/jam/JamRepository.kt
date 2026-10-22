@@ -53,7 +53,7 @@ class JamRepository @Inject constructor(
     private val okHttpClient: OkHttpClient,
 ) {
     companion object {
-        private const val TAG = "LastWaveJam"
+        private const val TAG = "Yukthi MusicJam"
         // Default production sync daemon address
         const val DEFAULT_JAM_SERVER_WS = "wss://jam.clashprojects.qd.je/ws"
         const val DEFAULT_JAM_SERVER_HTTP = "https://jam.clashprojects.qd.je"

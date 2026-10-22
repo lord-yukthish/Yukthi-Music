@@ -377,7 +377,7 @@ fun NewReleasesScreen(
                 videoId = track.videoId.takeIf(String::isNotBlank),
             ),
             playbackSourceLabel = "New Releases",
-            onPlayInLastWave = {
+            onPlayInYukthi Music = {
                 if (trackIndex >= 0) viewModel.playTrack(trackIndex)
             },
             onDismiss = { menuTrack = null },

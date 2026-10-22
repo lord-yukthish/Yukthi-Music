@@ -1529,7 +1529,7 @@ class GenerateRepository @Inject constructor(
             playlist.tracks.forEach { recordHeard(it.name, it.artist, it.youtubeVideoIdOrNull(), it.key) }
         }
 
-        // 4. Room: Song play stats (tracks played locally in LastWave)
+        // 4. Room: Song play stats (tracks played locally in Yukthi Music)
         runCatching { songPlayStatsDao.getAllTrackKeys() }.getOrDefault(emptyList()).forEach {
             heardKeys.add(it.lowercase())
         }

@@ -19,7 +19,7 @@ import javax.inject.Singleton
 import kotlin.math.abs
 
 @Serializable
-data class LastWaveLyricsSearchItem(
+data class Yukthi MusicLyricsSearchItem(
     val id: String = "",
     val name: String? = null,
     val artistName: String? = null,
@@ -31,7 +31,7 @@ data class LastWaveLyricsSearchItem(
 )
 
 @Serializable
-private data class LastWaveLyricsResponse(
+private data class Yukthi MusicLyricsResponse(
     val type: String? = null,
     val content: String? = null,
     val track: String? = null,
@@ -39,14 +39,14 @@ private data class LastWaveLyricsResponse(
 )
 
 /**
- * Syllable and line-synced Apple lyrics provided by LastWave backend.
+ * Syllable and line-synced Apple lyrics provided by Yukthi Music backend.
  *
  * Configured via GitHub Actions secrets / BuildConfig:
  * - `LASTWAVE_LYRICS_TOKEN`: Access token passed via `X-Lyrics-Token` header.
  * - `LASTWAVE_LYRICS_URL`: Base backend URL.
  */
 @Singleton
-class LastWaveLyricsApi @Inject constructor(
+class Yukthi MusicLyricsApi @Inject constructor(
     private val okHttpClient: OkHttpClient,
 ) {
     private val json = Json {
@@ -149,14 +149,14 @@ class LastWaveLyricsApi @Inject constructor(
                     isWordSynced = hasWordTiming,
                     plainLyrics = ttmlLines.joinToString("\n") { it.text },
                     isInstrumental = false,
-                    source = if (hasWordTiming) "LastWave (Word-Sync)" else "LastWave (Line-Sync)",
+                    source = if (hasWordTiming) "Yukthi Music (Word-Sync)" else "Yukthi Music (Line-Sync)",
                 )
             }
         }
 
         // 2. Parse JSON response envelope for LRC or plain text
         val response = try {
-            json.decodeFromString<LastWaveLyricsResponse>(trimmed)
+            json.decodeFromString<Yukthi MusicLyricsResponse>(trimmed)
         } catch (_: Exception) {
             null
         }
@@ -172,7 +172,7 @@ class LastWaveLyricsApi @Inject constructor(
                 isWordSynced = false,
                 plainLyrics = lrcLines.joinToString("\n") { it.text },
                 isInstrumental = false,
-                source = "LastWave (Line-Sync)",
+                source = "Yukthi Music (Line-Sync)",
             )
         }
 
@@ -184,7 +184,7 @@ class LastWaveLyricsApi @Inject constructor(
                 isWordSynced = false,
                 plainLyrics = content.trim(),
                 isInstrumental = false,
-                source = "LastWave (Plain)",
+                source = "Yukthi Music (Plain)",
             )
         }
 
@@ -196,7 +196,7 @@ class LastWaveLyricsApi @Inject constructor(
         artist: String,
         durationSeconds: Int?,
         isrc: String?,
-    ): LastWaveLyricsSearchItem? {
+    ): Yukthi MusicLyricsSearchItem? {
         val query = if (artist.isNotBlank()) "$title $artist" else title
         val items = performSearch(query).ifEmpty {
             if (artist.isNotBlank()) performSearch(title) else emptyList()
@@ -223,7 +223,7 @@ class LastWaveLyricsApi @Inject constructor(
         )?.takeIf { isVerifiedMatch(it, title, artist, expectedMs) }
     }
 
-    private suspend fun performSearch(query: String): List<LastWaveLyricsSearchItem> {
+    private suspend fun performSearch(query: String): List<Yukthi MusicLyricsSearchItem> {
         val url = "$baseUrl/search".toHttpUrlOrNull()?.newBuilder()
             ?.addQueryParameter("q", query.trim())
             ?.build() ?: return emptyList()
@@ -245,7 +245,7 @@ class LastWaveLyricsApi @Inject constructor(
         }
 
         return try {
-            json.decodeFromString<List<LastWaveLyricsSearchItem>>(body)
+            json.decodeFromString<List<Yukthi MusicLyricsSearchItem>>(body)
         } catch (cancellation: CancellationException) {
             throw cancellation
         } catch (_: Exception) {
@@ -253,13 +253,13 @@ class LastWaveLyricsApi @Inject constructor(
         }
     }
 
-    private fun durationDistance(song: LastWaveLyricsSearchItem, expectedMs: Long?): Long {
+    private fun durationDistance(song: Yukthi MusicLyricsSearchItem, expectedMs: Long?): Long {
         val songMs = song.durationInMillis ?: return Long.MAX_VALUE
         if (expectedMs == null || expectedMs <= 0 || songMs <= 0) return 0L
         return abs(songMs - expectedMs)
     }
 
-    private fun isVerifiedMatch(song: LastWaveLyricsSearchItem, title: String, artist: String, expectedMs: Long?): Boolean {
+    private fun isVerifiedMatch(song: Yukthi MusicLyricsSearchItem, title: String, artist: String, expectedMs: Long?): Boolean {
         if (!LrclibLyricsApi.sameVersion(title, song.name.orEmpty())) return false
         if (titleScore(song.name.orEmpty(), title) <= 0) return false
         if (artist.isBlank()) {
@@ -285,7 +285,7 @@ class LastWaveLyricsApi @Inject constructor(
         return if (LrclibLyricsApi.artistMatches(cleanSong, cleanReq)) 2 else 0
     }
 
-    private fun score(song: LastWaveLyricsSearchItem, title: String, artist: String, expectedMs: Long?): Int {
+    private fun score(song: Yukthi MusicLyricsSearchItem, title: String, artist: String, expectedMs: Long?): Int {
         var score = titleScore(song.name.orEmpty(), title) + artistScore(song.artistName.orEmpty(), artist)
         val songMs = song.durationInMillis
         if (expectedMs != null && expectedMs > 0 && songMs != null && songMs > 0) {
@@ -323,7 +323,7 @@ class LastWaveLyricsApi @Inject constructor(
     }
 
     companion object {
-        private const val USER_AGENT = "LastWave-Android/1.0"
+        private const val USER_AGENT = "Yukthi Music-Android/1.0"
         private const val DURATION_TOLERANCE_MS = 6_000L
         private const val MIN_MATCH_SCORE = 3
     }

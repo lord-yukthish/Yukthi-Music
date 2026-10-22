@@ -24,10 +24,10 @@ import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import com.lastwave.app.data.repository.LastFmAuthCallbackCoordinator
-import com.lastwave.app.ui.navigation.LastWaveNavHost
+import com.lastwave.app.ui.navigation.Yukthi MusicNavHost
 import com.lastwave.app.ui.navigation.Screen
 import com.lastwave.app.ui.player.PlayerHost
-import com.lastwave.app.ui.theme.LastWaveTheme
+import com.lastwave.app.ui.theme.Yukthi MusicTheme
 import com.lastwave.app.ui.theme.ThemeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -174,7 +174,7 @@ class MainActivity : androidx.fragment.app.FragmentActivity() {
             val themeViewModel: ThemeViewModel = hiltViewModel()
             val themeState by themeViewModel.uiState.collectAsStateWithLifecycle()
 
-            LastWaveTheme(themeState = themeState) {
+            Yukthi MusicTheme(themeState = themeState) {
                 val currentConfig = androidx.compose.ui.platform.LocalViewConfiguration.current
                 androidx.compose.runtime.CompositionLocalProvider(
                     androidx.compose.ui.platform.LocalViewConfiguration provides object : androidx.compose.ui.platform.ViewConfiguration by currentConfig {
@@ -189,7 +189,7 @@ class MainActivity : androidx.fragment.app.FragmentActivity() {
                     val hasBottomNavigation = backStackEntry?.destination?.route == Screen.MainShell.route
 
                     PlayerHost(hasBottomNavigation = hasBottomNavigation) {
-                        LastWaveNavHost(navController)
+                        Yukthi MusicNavHost(navController)
                     }
                 }
             }
@@ -344,7 +344,7 @@ class MainActivity : androidx.fragment.app.FragmentActivity() {
     }
 
     private companion object {
-        const val STARTUP_TAG = "LastWaveStartup"
+        const val STARTUP_TAG = "Yukthi MusicStartup"
         @Volatile
         var hasPromptedAudioThisSession = false
     }

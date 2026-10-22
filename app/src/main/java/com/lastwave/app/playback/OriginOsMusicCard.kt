@@ -34,7 +34,7 @@ internal object OriginOsMusicCard {
     private const val EVENT_LIST_FAVORITE = 1L shl 9
     private const val EVENT_LIST_LOCAL = 1L shl 10
 
-    /** Lyrics (bit 3) stay with LastWave's own lyrics screen. */
+    /** Lyrics (bit 3) stay with Yukthi Music's own lyrics screen. */
     const val SUPPORTED_EVENTS = EVENT_PLAY_CONTROL or EVENT_MUSIC_INFO or EVENT_MUSIC_IMAGE or
         EVENT_SEEK_POSITION or EVENT_FAVORITE or EVENT_LOOP_MODE or
         EVENT_LIST_CURRENT or EVENT_LIST_FAVORITE or EVENT_LIST_LOCAL

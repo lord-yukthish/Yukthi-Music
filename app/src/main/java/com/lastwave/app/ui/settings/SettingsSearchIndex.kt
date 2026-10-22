@@ -430,7 +430,7 @@ object SettingsSearchIndex {
             add(
                 SettingsEntry(
                     id = "appearance.lastwave_theme",
-                    title = "LastWave Signature Theme",
+                    title = "Yukthi Music Signature Theme",
                     subtitle = "Bespoke logo palette with Electric Lime and Obsidian Teal",
                     keywords = listOf(
                         "lastwave theme", "brand theme", "special theme", "logo theme", "lime",
@@ -861,7 +861,7 @@ object SettingsSearchIndex {
                 SettingsEntry(
                     id = "youtube.shown_playlists",
                     title = "Show / Hide Account Playlists",
-                    subtitle = "Control which playlists from your YouTube account appear in LastWave",
+                    subtitle = "Control which playlists from your YouTube account appear in Yukthi Music",
                     keywords = listOf(
                         "show playlists", "hide playlists", "visibility", "account playlists",
                         "library visibility", "filter playlists"
@@ -1229,7 +1229,7 @@ object SettingsSearchIndex {
                 SettingsEntry(
                     id = "backup.restore",
                     title = "Restore from Backup",
-                    subtitle = "Import a previously saved LastWave backup file to restore settings & playlists",
+                    subtitle = "Import a previously saved Yukthi Music backup file to restore settings & playlists",
                     keywords = listOf(
                         "restore", "import backup", "recover data", "load backup", "restore playlists",
                         "restore settings", "json restore"
@@ -1367,7 +1367,7 @@ object SettingsSearchIndex {
                 SettingsEntry(
                     id = "about.source_code",
                     title = "Open Source Code",
-                    subtitle = "View repository at github.com/Clash-Projects/LastWave-native",
+                    subtitle = "View repository at github.com/Clash-Projects/Yukthi Music-native",
                     keywords = listOf(
                         "source code", "github", "open source", "repository", "gpl", "license",
                         "contribute", "git"

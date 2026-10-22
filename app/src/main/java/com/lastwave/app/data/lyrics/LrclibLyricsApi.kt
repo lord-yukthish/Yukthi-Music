@@ -102,7 +102,7 @@ class LrclibLyricsApi @Inject constructor(
 
         val request = Request.Builder()
             .url(urlBuilder.build())
-            .header("User-Agent", "LastWave-Android/1.0 (https://github.com/clash-projects/lastwave)")
+            .header("User-Agent", "Yukthi Music-Android/1.0 (https://github.com/clash-projects/lastwave)")
             .build()
 
         return try {
@@ -129,7 +129,7 @@ class LrclibLyricsApi @Inject constructor(
 
         val request = Request.Builder()
             .url(urlBuilder.build())
-            .header("User-Agent", "LastWave-Android/1.0 (https://github.com/clash-projects/lastwave)")
+            .header("User-Agent", "Yukthi Music-Android/1.0 (https://github.com/clash-projects/lastwave)")
             .build()
 
         return try {

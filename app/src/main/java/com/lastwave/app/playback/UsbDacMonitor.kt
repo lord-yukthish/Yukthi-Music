@@ -41,7 +41,7 @@ class UsbDacMonitor @Inject constructor(
 ) {
     data class State(
         val dac: UsbDacInfo? = null,
-        /** LastWave asked AudioTrack to prefer this DAC. */
+        /** Yukthi Music asked AudioTrack to prefer this DAC. */
         val routeRequested: Boolean = false,
     )
 

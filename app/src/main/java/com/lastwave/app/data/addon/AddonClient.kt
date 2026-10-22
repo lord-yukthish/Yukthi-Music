@@ -146,10 +146,10 @@ class AddonClient(
             val reqBuilder = Request.Builder().url(url).get()
             if (isDownload) {
                 reqBuilder.header("X-LW-Intent", "download")
-                reqBuilder.header("User-Agent", "LastWave-Downloader/1.0")
+                reqBuilder.header("User-Agent", "Yukthi Music-Downloader/1.0")
             } else {
                 reqBuilder.header("X-LW-Intent", "stream")
-                reqBuilder.header("User-Agent", "LastWave-Player/1.0")
+                reqBuilder.header("User-Agent", "Yukthi Music-Player/1.0")
             }
             signRequest(url, "GET", reqBuilder)
             val req = reqBuilder.build()

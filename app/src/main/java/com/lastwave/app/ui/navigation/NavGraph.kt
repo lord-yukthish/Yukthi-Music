@@ -43,7 +43,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.stateIn
 
-/** Thin bridge so LastWaveNavHost (a plain composable, no direct Hilt
+/** Thin bridge so Yukthi MusicNavHost (a plain composable, no direct Hilt
  *  singleton access) can observe GenreExplorer's pending genre and
  *  navigate — same reasoning as MainShellViewModel's bridge to
  *  MixLauncher. */
@@ -113,7 +113,7 @@ class LaunchGateViewModel @Inject constructor(
 }
 
 @Composable
-fun LastWaveNavHost(
+fun Yukthi MusicNavHost(
     navController: NavHostController = rememberNavController(),
 ) {
     val mixNavBridge: MixLauncherNavBridge = hiltViewModel()
@@ -444,13 +444,13 @@ fun LastWaveNavHost(
             ),
         ) { backStackEntry ->
             val code = backStackEntry.arguments?.getString("code")
-            val jamViewModel: com.lastwave.app.ui.jam.LastWaveJamViewModel = hiltViewModel()
+            val jamViewModel: com.lastwave.app.ui.jam.Yukthi MusicJamViewModel = hiltViewModel()
             androidx.compose.runtime.LaunchedEffect(code) {
                 if (!code.isNullOrBlank()) {
                     jamViewModel.setPendingCode(code)
                 }
             }
-            com.lastwave.app.ui.jam.LastWaveJamSheet(
+            com.lastwave.app.ui.jam.Yukthi MusicJamSheet(
                 viewModel = jamViewModel,
                 onDismiss = { navController.popBackStack() },
             )
@@ -691,7 +691,7 @@ private fun LaunchGate() {
                 )
             }
             Spacer(Modifier.height(18.dp))
-            Text("LastWave", style = MaterialTheme.typography.headlineSmall)
+            Text("Yukthi Music", style = MaterialTheme.typography.headlineSmall)
             Spacer(Modifier.height(20.dp))
             ExpressiveLoadingIndicator(message = "Preparing your music")
         }

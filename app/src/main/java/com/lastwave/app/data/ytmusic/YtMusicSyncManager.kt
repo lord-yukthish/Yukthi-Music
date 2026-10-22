@@ -44,11 +44,11 @@ sealed interface YtSyncState {
 }
 
 /**
- * Keeps every LastWave playlist mirrored to the user's YouTube Music account
+ * Keeps every Yukthi Music playlist mirrored to the user's YouTube Music account
  * ("sync here → there, 24/7") — including the built-in Liked Songs, which
  * syncs as its own private "Liked Songs" mirror. Importing FROM YT Music
  * stays selective — the user picks which playlists to import — but everything
- * saved in LastWave is pushed up automatically.
+ * saved in Yukthi Music is pushed up automatically.
  *
  * Reconcile model (idempotent full-diff per playlist — safe to run any number
  * of times, on any trigger):
@@ -161,7 +161,7 @@ class YtMusicSyncManager @Inject constructor(
             var failed = 0
 
             // Deletion propagation: mappings whose local playlist vanished
-            // mean "deleted in LastWave" — delete the remote mirror too.
+            // mean "deleted in Yukthi Music" — delete the remote mirror too.
             val liveIds = allPlaylists.mapTo(mutableSetOf()) { it.id }
             val orphans = mappings.keys.filterNot { it in liveIds }
             var removedAnyMapping = false
@@ -351,7 +351,7 @@ class YtMusicSyncManager @Inject constructor(
         val removedLocally = baseline - localSet
         val removedRemotely = baseline - remoteSet
         val finalSet = if (baseline.isEmpty()) {
-            // A newly linked mirror has no shared history yet; LastWave is
+            // A newly linked mirror has no shared history yet; Yukthi Music is
             // authoritative for that first pass so stale remote entries do
             // not get imported as random local songs.
             localSet

@@ -108,7 +108,7 @@ class ModuleFlacTranscoder @Inject constructor(
                                 .apply {
                                     val headers = descriptor.headers.toMutableMap()
                                     if (headers.keys.none { it.equals("User-Agent", ignoreCase = true) }) {
-                                        headers["User-Agent"] = "LastWave/4.3.1"
+                                        headers["User-Agent"] = "Yukthi Music/4.3.1"
                                     }
                                     setLicenseRequestHeaders(headers)
                                 }

@@ -284,7 +284,7 @@ class NativeProcessingAudioSink(
             } else {
                 // 16/24/32-bit integer PCM straight through in its native
                 // packing: the source rate opens the AudioTrack, so no
-                // LastWave resampler runs at any depth.
+                // Yukthi Music resampler runs at any depth.
                 safeResetProcessor()
                 configureUsbOutput(format, format.pcmEncoding, outputChannels)
                 fallbackDelegate.configure(format, specifiedBufferSize, outputChannels)

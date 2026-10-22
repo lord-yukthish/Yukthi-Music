@@ -154,7 +154,7 @@ internal data class PersistedPlaybackSession(
     val queue: List<PlayableTrack>,
     val currentIndex: Int,
     val positionMs: Long,
-    val sourceLabel: String = "LastWave",
+    val sourceLabel: String = "Yukthi Music",
     val isEndlessQueue: Boolean = false,
     val shuffleEnabled: Boolean = false,
     val repeatMode: Int = Player.REPEAT_MODE_OFF,
@@ -167,7 +167,7 @@ data class MusicPlayerState(
     val current: PlayableTrack? = null,
     val queue: List<PlayableTrack> = emptyList(),
     val currentIndex: Int = -1,
-    val sourceLabel: String = "LastWave",
+    val sourceLabel: String = "Yukthi Music",
     val isEndlessQueue: Boolean = false,
     val isPlaying: Boolean = false,
     val isBuffering: Boolean = false,
@@ -193,7 +193,7 @@ data class MusicPlayerState(
  */
 data class PlaybackChromeState(
     val current: PlayableTrack? = null,
-    val sourceLabel: String = "LastWave",
+    val sourceLabel: String = "Yukthi Music",
     val isPlaying: Boolean = false,
     val isBuffering: Boolean = false,
     val queueSize: Int = 0,
@@ -253,7 +253,7 @@ class MusicPlayer @Inject constructor(
     private val streamResolutionWakeLock by lazy {
         (appContext.getSystemService(Context.POWER_SERVICE) as? PowerManager)?.newWakeLock(
             PowerManager.PARTIAL_WAKE_LOCK,
-            "LastWave:StreamResolutionWakeLock",
+            "Yukthi Music:StreamResolutionWakeLock",
         )?.apply { setReferenceCounted(false) }
     }
     private val extractorsFactory: ExtractorsFactory by lazy {
@@ -1994,7 +1994,7 @@ class MusicPlayer @Inject constructor(
 
     fun play(
         track: PlayableTrack,
-        sourceLabel: String = "LastWave",
+        sourceLabel: String = "Yukthi Music",
         startRadio: Boolean = true,
     ) {
         pendingRestoredSession = null
@@ -2026,7 +2026,7 @@ class MusicPlayer @Inject constructor(
     fun playQueue(
         tracks: List<PlayableTrack>,
         startIndex: Int = 0,
-        sourceLabel: String = "LastWave",
+        sourceLabel: String = "Yukthi Music",
         startShuffled: Boolean = false,
         enableRadioContinuation: Boolean = false,
     ) {
@@ -2083,7 +2083,7 @@ class MusicPlayer @Inject constructor(
         tracks: List<PlayableTrack>,
         startIndex: Int,
         endlessDiscover: Boolean,
-        sourceLabel: String = if (endlessDiscover) "Discover" else "LastWave",
+        sourceLabel: String = if (endlessDiscover) "Discover" else "Yukthi Music",
         startShuffled: Boolean = false,
         enableRadioContinuation: Boolean = false,
     ) {
@@ -3146,9 +3146,9 @@ class MusicPlayer @Inject constructor(
         outgoingPlayer = outgoing
         activePlayer = standby
         standby.addListener(listener)
-        // Keep handleAudioFocus = false: LastWave manages audio focus manually via requestMediaAudioFocus().
+        // Keep handleAudioFocus = false: Yukthi Music manages audio focus manually via requestMediaAudioFocus().
         // Setting true here activates ExoPlayer's internal AudioFocusManager which steals focus, causing Android
-        // to send AUDIOFOCUS_LOSS (-1) to LastWave's own focus listener, immediately pausing playback.
+        // to send AUDIOFOCUS_LOSS (-1) to Yukthi Music's own focus listener, immediately pausing playback.
         standby.setAudioAttributes(standby.audioAttributes, false)
         standby.play()
         // The standby is now the live player; the outgoing one is the next
@@ -3439,7 +3439,7 @@ class MusicPlayer @Inject constructor(
      * the Bit-Perfect toggle decides bypass, volume policy and verdict.
      * The SOURCE rate always drives the output-stream request (44.1/48/
      * 88.2/96/176.4/192/352.8/384 kHz) — never a fixed 48 kHz — so no
-     * LastWave resampler runs when the route accepts the source format.
+     * Yukthi Music resampler runs when the route accepts the source format.
      */
     private fun applyDacRoutingFor(sourceRateHz: Int?, streamCodec: String? = null) {
         val isSpatial = isSpatialAudioCodec(streamCodec) || isSpatialAudioCodec(_state.value.audioCodec)
@@ -6342,7 +6342,7 @@ class MusicPlayer @Inject constructor(
         // files was blocking playback even when the YouTube URL was cached.
         if (!deepScan) return null
 
-        // 4. Fallback: Search physical download directories (Music/<folder> + legacy Music/LastWave)
+        // 4. Fallback: Search physical download directories (Music/<folder> + legacy Music/Yukthi Music)
         val candidateExtensions = listOf("flac", "m4a", "mp3", "opus", "ogg", "webm", "wav")
         val candidateBases = listOf(
             "$artist - $title",

@@ -162,18 +162,18 @@ class MusicPlaybackService : MediaBrowserServiceCompat() {
         val powerManager = getSystemService(Context.POWER_SERVICE) as? PowerManager
         playbackWakeLock = powerManager?.newWakeLock(
             PowerManager.PARTIAL_WAKE_LOCK,
-            "LastWave:PlaybackWakeLock",
+            "Yukthi Music:PlaybackWakeLock",
         )?.apply { setReferenceCounted(false) }
 
         val wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as? WifiManager
         playbackWifiLock = wifiManager?.createWifiLock(
             WifiManager.WIFI_MODE_FULL_HIGH_PERF,
-            "LastWave:PlaybackWifiLock",
+            "Yukthi Music:PlaybackWifiLock",
         )?.apply { setReferenceCounted(false) }
 
         createNotificationChannel()
         runCatching {
-            val session = MediaSessionCompat(this, "LastWavePlayer").apply {
+            val session = MediaSessionCompat(this, "Yukthi MusicPlayer").apply {
                 setFlags(
                     MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS or
                         MediaSessionCompat.FLAG_HANDLES_TRANSPORT_CONTROLS,
@@ -324,7 +324,7 @@ class MusicPlaybackService : MediaBrowserServiceCompat() {
         // KWGT, Wear OS, Bluetooth companions and other third-party
         // controllers connect here as ordinary user apps — NOT as system /
         // car hosts. Returning null rejects the connection
-        // (onConnectionFailed), which is why KWGT never listed LastWave as
+        // (onConnectionFailed), which is why KWGT never listed Yukthi Music as
         // a media app and its transport buttons did nothing. The browse tree
         // only exposes queue/playlist/download metadata, so any
         // UID-verified caller may browse; transport stays gated by the
@@ -388,7 +388,7 @@ class MusicPlaybackService : MediaBrowserServiceCompat() {
                                 .build(),
                             MediaBrowserCompat.MediaItem.FLAG_PLAYABLE,
                         )
-                    }.let { OriginOsMusicCard.singlePage(it, "Nothing playing", "Play something in LastWave") }
+                    }.let { OriginOsMusicCard.singlePage(it, "Nothing playing", "Play something in Yukthi Music") }
                     OriginOsMusicCard.LIST_FAVORITE -> OriginOsMusicCard.singlePage(
                         withContext(Dispatchers.IO) {
                             androidAutoLibrary.loadChildren(AndroidAutoMediaLibrary.PLAYLISTS_ID, state)
@@ -401,7 +401,7 @@ class MusicPlaybackService : MediaBrowserServiceCompat() {
                             androidAutoLibrary.loadChildren(AndroidAutoMediaLibrary.DOWNLOADS_ID, state)
                         },
                         "No downloads",
-                        "Music downloaded in LastWave shows here",
+                        "Music downloaded in Yukthi Music shows here",
                     )
                 }
             }.onFailure { error ->
@@ -613,7 +613,7 @@ class MusicPlaybackService : MediaBrowserServiceCompat() {
             } else {
                 @Suppress("DEPRECATION") Notification.Builder(this)
             }.setSmallIcon(R.drawable.ic_launcher_logo)
-             .setContentTitle(musicPlayer.state.value.current?.title ?: "LastWave")
+             .setContentTitle(musicPlayer.state.value.current?.title ?: "Yukthi Music")
              .setContentText(musicPlayer.state.value.current?.artist ?: "Music player")
              .setOnlyAlertOnce(true)
              .build()
@@ -1313,7 +1313,7 @@ class MusicPlaybackService : MediaBrowserServiceCompat() {
             val playPauseLabel = if (state.isPlaying) "Pause" else "Play"
             return builder
                 .setSmallIcon(R.drawable.ic_launcher_logo)
-                .setContentTitle(state.current?.title ?: "LastWave")
+                .setContentTitle(state.current?.title ?: "Yukthi Music")
                 .setContentText(state.current?.artist ?: "Music player")
                 .setSubText(state.current?.album)
                 .setContentIntent(openAppPendingIntent())
@@ -1377,7 +1377,7 @@ class MusicPlaybackService : MediaBrowserServiceCompat() {
 
         return builder
             .setSmallIcon(R.drawable.ic_launcher_logo)
-            .setContentTitle(state.current?.title ?: "LastWave")
+            .setContentTitle(state.current?.title ?: "Yukthi Music")
             .setContentText(state.current?.artist ?: "Music player")
             .setSubText(state.current?.album)
             .setContentIntent(openAppPendingIntent())
@@ -1434,7 +1434,7 @@ class MusicPlaybackService : MediaBrowserServiceCompat() {
         // 192px is already sharp. Two sizes keep the Binder parcel small.
         if (art != null) setImageViewBitmap(R.id.notification_artwork, scaledBitmap(art, if (expanded) 288 else 192))
         else setImageViewResource(R.id.notification_artwork, R.mipmap.ic_launcher)
-        setTextViewText(R.id.notification_title, state.current?.title ?: "LastWave")
+        setTextViewText(R.id.notification_title, state.current?.title ?: "Yukthi Music")
         setTextViewText(R.id.notification_artist, state.current?.artist ?: "Music player")
         setTextColor(R.id.notification_title, palette.onSurface)
         setTextColor(R.id.notification_artist, palette.onSurfaceVariant)
@@ -1572,7 +1572,7 @@ class MusicPlaybackService : MediaBrowserServiceCompat() {
             runCatching { nm.deleteNotificationChannel(LEGACY_CHANNEL_ID_V1) }
             nm.createNotificationChannel(
                 NotificationChannel(CHANNEL_ID, "Music playback", NotificationManager.IMPORTANCE_DEFAULT).apply {
-                    description = "Native LastWave playback controls"
+                    description = "Native Yukthi Music playback controls"
                     setShowBadge(false)
                     setSound(null, null)
                     enableVibration(false)

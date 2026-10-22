@@ -122,7 +122,7 @@ fun rememberBackdrop(color: Color): LayerBackdrop? =
 
 /**
  * Continuous-curvature squircle (G2 superellipse) implementing [CornerBasedShape].
- * Kept from LastWave so DockShape stays a CornerBasedShape (lens-compatible).
+ * Kept from Yukthi Music so DockShape stays a CornerBasedShape (lens-compatible).
  */
 class SquircleShape(
     topStart: CornerSize,
@@ -710,7 +710,7 @@ fun LiquidGlassIconButton(
     }
 }
 
-/** Compat overload: Painter version (existing LastWave call sites). */
+/** Compat overload: Painter version (existing Yukthi Music call sites). */
 @Composable
 fun LiquidGlassIconButton(
     backdrop: Backdrop?,

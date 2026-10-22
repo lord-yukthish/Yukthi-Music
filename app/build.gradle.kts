@@ -56,8 +56,12 @@ android {
         return ""
     }
 
+    base {
+        archivesName.set("YukthiMusic")
+    }
+
     defaultConfig {
-        applicationId = "com.lastwave.app"
+        applicationId = "ai.yukthi.music"
         minSdk = (project.findProperty("minSdk") as? String)?.toIntOrNull() ?: 29
         targetSdk = 35
         versionCode = 26
