@@ -613,7 +613,7 @@ class MusicPlaybackService : MediaBrowserServiceCompat() {
             } else {
                 @Suppress("DEPRECATION") Notification.Builder(this)
             }.setSmallIcon(R.drawable.ic_launcher_logo)
-             .setContentTitle(musicPlayer.state.value.current?.title ?: "LastWave")
+             .setContentTitle(musicPlayer.state.value.current?.title ?: "Yukthi Music")
              .setContentText(musicPlayer.state.value.current?.artist ?: "Music player")
              .setOnlyAlertOnce(true)
              .build()
@@ -1313,7 +1313,7 @@ class MusicPlaybackService : MediaBrowserServiceCompat() {
             val playPauseLabel = if (state.isPlaying) "Pause" else "Play"
             return builder
                 .setSmallIcon(R.drawable.ic_launcher_logo)
-                .setContentTitle(state.current?.title ?: "LastWave")
+                .setContentTitle(state.current?.title ?: "Yukthi Music")
                 .setContentText(state.current?.artist ?: "Music player")
                 .setSubText(state.current?.album)
                 .setContentIntent(openAppPendingIntent())
@@ -1377,7 +1377,7 @@ class MusicPlaybackService : MediaBrowserServiceCompat() {
 
         return builder
             .setSmallIcon(R.drawable.ic_launcher_logo)
-            .setContentTitle(state.current?.title ?: "LastWave")
+            .setContentTitle(state.current?.title ?: "Yukthi Music")
             .setContentText(state.current?.artist ?: "Music player")
             .setSubText(state.current?.album)
             .setContentIntent(openAppPendingIntent())
@@ -1434,7 +1434,7 @@ class MusicPlaybackService : MediaBrowserServiceCompat() {
         // 192px is already sharp. Two sizes keep the Binder parcel small.
         if (art != null) setImageViewBitmap(R.id.notification_artwork, scaledBitmap(art, if (expanded) 288 else 192))
         else setImageViewResource(R.id.notification_artwork, R.mipmap.ic_launcher)
-        setTextViewText(R.id.notification_title, state.current?.title ?: "LastWave")
+        setTextViewText(R.id.notification_title, state.current?.title ?: "Yukthi Music")
         setTextViewText(R.id.notification_artist, state.current?.artist ?: "Music player")
         setTextColor(R.id.notification_title, palette.onSurface)
         setTextColor(R.id.notification_artist, palette.onSurfaceVariant)

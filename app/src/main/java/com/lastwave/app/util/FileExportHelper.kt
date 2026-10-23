@@ -36,9 +36,9 @@ class FileExportHelper @Inject constructor(
     @ApplicationContext private val context: Context,
 ) {
     companion object {
-        private const val PUBLIC_EXPORT_SUBDIR = "LastWave"
-        private const val PUBLIC_BACKUP_SUBDIR = "LastWave/Backups"
-        private const val PUBLIC_PLAYLIST_SUBDIR = "LastWave/Playlists"
+        private const val PUBLIC_EXPORT_SUBDIR = "Yukthi Music"
+        private const val PUBLIC_BACKUP_SUBDIR = "Yukthi Music/Backups"
+        private const val PUBLIC_PLAYLIST_SUBDIR = "Yukthi Music/Playlists"
         private const val PLAYLIST_MIRROR_FILENAME = "lastwave-playlists.json"
         private const val PLAYLIST_RECOVERY_FILENAME = "lastwave-playlists-recovery.json"
         private const val MIRROR_PREFS = "playlist_file_mirror"

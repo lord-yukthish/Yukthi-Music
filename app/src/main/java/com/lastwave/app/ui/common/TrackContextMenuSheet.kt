@@ -287,7 +287,7 @@ fun TrackContextMenuSheet(
     capabilities: TrackMenuCapabilities,
     playableTrack: PlayableTrack? = null,
     onDismiss: () -> Unit,
-    playbackSourceLabel: String = "LastWave",
+    playbackSourceLabel: String = "Yukthi Music",
     onPlayInLastWave: (() -> Unit)? = null,
     onStartMix: ((trackName: String, artistName: String) -> Unit)? = null,
     onExploreGenre: ((genre: String) -> Unit)? = null,
@@ -604,7 +604,7 @@ fun TrackContextMenuSheet(
                     add { pos ->
                         MenuActionRow(
                             icon = Icons.Filled.Group,
-                            label = "LastWave Jam (Listen Together)",
+                            label = "Yukthi Music Jam (Listen Together)",
                             position = pos,
                         ) {
                             showJamSheet = true

@@ -320,7 +320,7 @@ class AppleMusicLyricsApi @Inject constructor(
     }
 
     companion object {
-        const val USER_AGENT = "LastWave"
+        const val USER_AGENT = "Yukthi Music"
         // 3 (exact title) + 2 (artist) = 5: both sides must agree. The old
         // threshold of 3 accepted a title-exact homonym with no artist match.
         private const val MIN_MATCH_SCORE = 5

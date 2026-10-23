@@ -43,7 +43,7 @@ data class HttpAddonConfig(
  *  proper nouns — no localization needed. */
 enum class LyricsProvider(val id: String, val title: String, val subtitle: String) {
     AUTO("auto", "Auto", "Fastest word-sync wins, LRCLIB fallback"),
-    LASTWAVE("lastwave", "LastWave", "Syllable & line-synced Apple lyrics first"),
+    LASTWAVE("lastwave", "Yukthi Music", "Syllable & line-synced Apple lyrics first"),
     LRC_RED("lrc_red", "lrc.red", "ISRC-indexed syllable TTML & LRC first"),
     APPLE_MUSIC("apple_music", "Apple Music", "Syllable-synced Apple Music lyrics first"),
     BETTER_LYRICS("better_lyrics", "BetterLyrics", "Word-synced lyrics first"),
@@ -151,7 +151,7 @@ data class MiscSettings(
     /** In-app language override tag: "system" (default), "en", "tr", "zh-Hans". */
     val appLanguageTag: String = AppLanguage.SYSTEM.tag,
     /** Subfolder name under public Music/ where downloads are saved.
-     *  Default "LastWave" -> Music/LastWave. Scoped storage (API 29+)
+     *  Default "Yukthi Music" -> Music/LastWave. Scoped storage (API 29+)
      *  forbids arbitrary paths, so only the leaf folder name is configurable. */
     val downloadFolder: String = DEFAULT_DOWNLOAD_FOLDER,
     /** User-chosen SAF tree Uri (ACTION_OPEN_DOCUMENT_TREE) for downloads,
@@ -236,7 +236,7 @@ enum class DownloadFolderStructure(val id: String, val titleRes: Int, val exampl
 }
 
 /** Default subfolder under Music/ for offline tracks (Music/LastWave). */
-const val DEFAULT_DOWNLOAD_FOLDER = "LastWave"
+const val DEFAULT_DOWNLOAD_FOLDER = "Yukthi Music"
 
 /** Sanitize a user-entered download folder to a safe single path segment:
  *  no separators, no traversal, max 40 chars, fallback to default. */

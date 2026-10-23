@@ -430,7 +430,7 @@ object SettingsSearchIndex {
             add(
                 SettingsEntry(
                     id = "appearance.lastwave_theme",
-                    title = "LastWave Signature Theme",
+                    title = "Yukthi Music Signature Theme",
                     subtitle = "Bespoke logo palette with Electric Lime and Obsidian Teal",
                     keywords = listOf(
                         "lastwave theme", "brand theme", "special theme", "logo theme", "lime",

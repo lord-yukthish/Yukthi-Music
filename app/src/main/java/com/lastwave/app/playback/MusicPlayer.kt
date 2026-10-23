@@ -154,7 +154,7 @@ internal data class PersistedPlaybackSession(
     val queue: List<PlayableTrack>,
     val currentIndex: Int,
     val positionMs: Long,
-    val sourceLabel: String = "LastWave",
+    val sourceLabel: String = "Yukthi Music",
     val isEndlessQueue: Boolean = false,
     val shuffleEnabled: Boolean = false,
     val repeatMode: Int = Player.REPEAT_MODE_OFF,
@@ -167,7 +167,7 @@ data class MusicPlayerState(
     val current: PlayableTrack? = null,
     val queue: List<PlayableTrack> = emptyList(),
     val currentIndex: Int = -1,
-    val sourceLabel: String = "LastWave",
+    val sourceLabel: String = "Yukthi Music",
     val isEndlessQueue: Boolean = false,
     val isPlaying: Boolean = false,
     val isBuffering: Boolean = false,
@@ -193,7 +193,7 @@ data class MusicPlayerState(
  */
 data class PlaybackChromeState(
     val current: PlayableTrack? = null,
-    val sourceLabel: String = "LastWave",
+    val sourceLabel: String = "Yukthi Music",
     val isPlaying: Boolean = false,
     val isBuffering: Boolean = false,
     val queueSize: Int = 0,
@@ -1994,7 +1994,7 @@ class MusicPlayer @Inject constructor(
 
     fun play(
         track: PlayableTrack,
-        sourceLabel: String = "LastWave",
+        sourceLabel: String = "Yukthi Music",
         startRadio: Boolean = true,
     ) {
         pendingRestoredSession = null
@@ -2026,7 +2026,7 @@ class MusicPlayer @Inject constructor(
     fun playQueue(
         tracks: List<PlayableTrack>,
         startIndex: Int = 0,
-        sourceLabel: String = "LastWave",
+        sourceLabel: String = "Yukthi Music",
         startShuffled: Boolean = false,
         enableRadioContinuation: Boolean = false,
     ) {
@@ -2083,7 +2083,7 @@ class MusicPlayer @Inject constructor(
         tracks: List<PlayableTrack>,
         startIndex: Int,
         endlessDiscover: Boolean,
-        sourceLabel: String = if (endlessDiscover) "Discover" else "LastWave",
+        sourceLabel: String = if (endlessDiscover) "Discover" else "Yukthi Music",
         startShuffled: Boolean = false,
         enableRadioContinuation: Boolean = false,
     ) {

@@ -103,7 +103,7 @@ object DiscordPresence {
 
     /** The two-line status line: artist, then the measured quality. */
     fun stateLine(artist: String, album: String?, title: String, quality: String): String {
-        val head = artist.trim().ifEmpty { album?.trim()?.takeIf { it.isNotEmpty() } ?: "LastWave" }
+        val head = artist.trim().ifEmpty { album?.trim()?.takeIf { it.isNotEmpty() } ?: "Yukthi Music" }
         val raw = if (quality.isEmpty()) clip(head) else clip(head) + "\n · " + quality
         return if (raw.length > MAX_STATE) raw.substring(0, MAX_STATE - 1) + "..." else raw
     }
@@ -239,7 +239,7 @@ object DiscordPresence {
 
         return buildJsonObject {
             put("type", TYPE_LISTENING)
-            put("name", "LastWave")
+            put("name", "Yukthi Music")
             put("details", title)
             put("state", stateLine(track.artist, track.album, track.title, qualityLine(state)))
             timestamps?.let { put("timestamps", it) }
